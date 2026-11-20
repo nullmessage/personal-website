@@ -5,7 +5,7 @@
 html {
   --background: var(--ctp-latte-base);
   --text: var(--ctp-latte-text);
-  --highlight: var(--ctp-latte-teal);
+  --highlight: var(--ctp-latte-mauve);
   color-scheme: light;
   background: var(--background);
   color: var(--text);
@@ -46,7 +46,7 @@ h1 {
   html {
     --background: var(--ctp-mocha-base);
     --text: var(--ctp-mocha-text);
-    --highlight: var(--ctp-mocha-teal);
+    --highlight: var(--ctp-mocha-mauve);
     color-scheme: dark;
   }
 }

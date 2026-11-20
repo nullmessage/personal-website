@@ -18,10 +18,10 @@
   "dependencies": {
     "@catppuccin/palette": "^1.8.0",
     "@darkstar/prettier": "^1.0.1",
-    "astro": "^7.3.5"
+    "astro": "7.4.13"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.10",
+    "@astrojs/check": "0.9.12",
     "prettier": "^3.9.9",
     "prettier-plugin-astro": "^1.1.0",
     "typescript": "^6.0.3"
