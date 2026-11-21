@@ -18,11 +18,13 @@ import '../styles/global.css';
     <meta
       name='theme-color'
       content={flavors.latte.colors.base.hex}
+      data-theme='light'
       media='(prefers-color-scheme: light)'
     />
     <meta
       name='theme-color'
       content={flavors.mocha.colors.base.hex}
+      data-theme='dark'
       media='(prefers-color-scheme: dark)'
     />
     <link rel='preconnect' href='https://fonts.googleapis.com' />
@@ -32,6 +34,7 @@ import '../styles/global.css';
       rel='stylesheet'
     />
     <title>saving the world. by design.</title>
+    <script src='../scripts/theme.ts'></script>
   </head>
   <body>
     <main>

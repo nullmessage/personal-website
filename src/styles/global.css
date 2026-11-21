@@ -3,10 +3,10 @@
 }
 
 html {
-  --background: var(--ctp-latte-base);
-  --text: var(--ctp-latte-text);
-  --highlight: var(--ctp-latte-mauve);
-  color-scheme: light;
+  --background: light-dark(var(--ctp-latte-base), var(--ctp-mocha-base));
+  --text: light-dark(var(--ctp-latte-text), var(--ctp-mocha-text));
+  --highlight: light-dark(var(--ctp-latte-overlay0), var(--ctp-mocha-overlay0));
+  color-scheme: light dark;
   background: var(--background);
   color: var(--text);
   font-family: 'Geist', sans-serif;
@@ -42,11 +42,10 @@ h1 {
   color: var(--highlight);
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    --background: var(--ctp-mocha-base);
-    --text: var(--ctp-mocha-text);
-    --highlight: var(--ctp-mocha-mauve);
-    color-scheme: dark;
-  }
+html[data-theme='light'] {
+  color-scheme: light;
+}
+
+html[data-theme='dark'] {
+  color-scheme: dark;
 }
