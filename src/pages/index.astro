@@ -14,10 +14,7 @@ const fingerprintGroups = fingerprint.toUpperCase().match(/.{4}/g) ?? [];
     <meta charset='UTF-8' />
     <link rel='icon' type='image/svg+xml' href='/img/favicon.svg' />
     <meta name='viewport' content='width=device-width, initial-scale=1' />
-    <meta
-      name='description'
-      content='saving the world. by design.'
-    />
+    <meta name='description' content='saving the world. by design.' />
     <meta name='color-scheme' content='light dark' />
     <meta
       name='theme-color'
@@ -49,7 +46,11 @@ const fingerprintGroups = fingerprint.toUpperCase().match(/.{4}/g) ?? [];
       </h1>
       <div class='contact'>
         <div class='contact-button'>
-          <EmailButton email='nullmessage@pm.me' label='Say Hello' variant='primary' />
+          <EmailButton
+            email='nullmessage@pm.me'
+            label='Say Hello'
+            variant='secondary'
+          />
         </div>
         <a
           class='fingerprint'
@@ -57,7 +58,11 @@ const fingerprintGroups = fingerprint.toUpperCase().match(/.{4}/g) ?? [];
           download='pgp.asc'
           aria-label='Download public PGP key'
         >
-          <code>{fingerprintGroups.slice(0, 5).join(' ')}<br />{fingerprintGroups.slice(5).join(' ')}</code>
+          <code>
+            {fingerprintGroups.slice(0, 5).join(' ')}
+            <br />
+            {fingerprintGroups.slice(5).join(' ')}
+          </code>
         </a>
       </div>
     </main>
