@@ -5,7 +5,8 @@
 html {
   --background: light-dark(var(--ctp-latte-base), var(--ctp-mocha-base));
   --text: light-dark(var(--ctp-latte-text), var(--ctp-mocha-text));
-  --highlight: light-dark(var(--ctp-latte-surface2), var(--ctp-mocha-surface2));
+  --highlight: light-dark(var(--ctp-latte-mauve), var(--ctp-mocha-mauve));
+  --surface: light-dark(var(--ctp-latte-surface0), var(--ctp-mocha-surface0));
   --muted: light-dark(var(--ctp-latte-subtext0), var(--ctp-mocha-subtext0));
   color-scheme: light dark;
   background: var(--background);
@@ -25,7 +26,7 @@ main {
   align-items: flex-start;
   gap: 40px;
   width: 100%;
-  max-width: 1200px;
+  max-width: 900px;
   min-height: 100vh;
   min-height: 100svh;
   margin-inline: auto;
@@ -40,10 +41,11 @@ h1 {
   letter-spacing: -0.05em;
   text-align: left;
   overflow-wrap: anywhere;
+  color: light-dark(var(--ctp-latte-text), var(--ctp-mocha-text))
 }
 
 .highlight {
-  color: var(--highlight);
+  color: light-dark(var(--ctp-latte-surface2), var(--ctp-mocha-surface2));
 }
 
 html[data-theme='light'] {

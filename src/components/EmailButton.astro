@@ -1,14 +1,15 @@
 ---
 import { Send } from '@lucide/astro';
+import type { ComponentProps } from 'astro/types';
 import Button from './Button.astro';
 
 interface Props {
   email: string;
   label?: string;
-  variant?: 'dark' | 'light' | 'auto';
+  variant?: ComponentProps<typeof Button>['variant'];
 }
 
-const { email, label = 'Get in touch', variant = 'auto' } = Astro.props;
+const { email, label = 'Get in touch', variant = 'primary' } = Astro.props;
 // Build-time encoding keeps the literal address out of the delivered HTML/JS.
 // This is obfuscation, not encryption: visitors can recover the recipient.
 const encodedEmail = btoa(email);

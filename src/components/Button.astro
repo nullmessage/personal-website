@@ -2,10 +2,10 @@
 import type { HTMLAttributes } from 'astro/types';
 
 interface Props extends HTMLAttributes<'button'> {
-  variant?: 'dark' | 'light' | 'auto';
+  variant?: 'primary' | 'secondary';
 }
 
-const { variant = 'auto', class: className, type = 'button', ...attributes } = Astro.props;
+const { variant = 'primary', class: className, type = 'button', ...attributes } = Astro.props;
 ---
 
 <button type={type} class:list={['button', `button--${variant}`, className]} {...attributes}>
@@ -22,21 +22,19 @@ const { variant = 'auto', class: className, type = 'button', ...attributes } = A
     padding: 20px 40px;
     border: 0;
     border-radius: 100px;
-    background: var(--ctp-mocha-base);
-    color: #fff;
     font: 600 1.25rem/1.2 'Geist', sans-serif;
     letter-spacing: -0.05em;
     cursor: pointer;
   }
 
-  .button--light {
-    background: var(--ctp-latte-base);
-    color: var(--ctp-mocha-base);
+  .button--primary {
+    background: var(--highlight);
+    color: var(--background);
   }
 
-  .button--auto {
-    background: light-dark(var(--ctp-mocha-base), var(--ctp-latte-base));
-    color: light-dark(#fff, var(--ctp-mocha-base));
+  .button--secondary {
+    background: var(--surface);
+    color: var(--text);
   }
 
   .button:disabled {
