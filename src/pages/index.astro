@@ -2,6 +2,10 @@
 import { flavors } from '@catppuccin/palette';
 import '@catppuccin/palette/css/catppuccin.css';
 import '../styles/global.css';
+import EmailButton from '../components/EmailButton.astro';
+
+const fingerprint = '585775feae0c720c21c557ec937737afb10b4764';
+const fingerprintGroups = fingerprint.toUpperCase().match(/.{4}/g) ?? [];
 ---
 
 <!doctype html>
@@ -30,7 +34,7 @@ import '../styles/global.css';
     <link rel='preconnect' href='https://fonts.googleapis.com' />
     <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
     <link
-      href='https://fonts.googleapis.com/css2?family=Geist:ital,wght@0,100..900;1,100..900&display=swap'
+      href='https://fonts.googleapis.com/css2?family=Geist:ital,wght@0,100..900;1,100..900&family=Geist+Mono:wght@400&display=swap'
       rel='stylesheet'
     />
     <title>saving the world. by design.</title>
@@ -43,6 +47,85 @@ import '../styles/global.css';
         <br />
         <span class='highlight'>by design.</span>
       </h1>
+      <div class='contact'>
+        <div class='contact-button'>
+          <EmailButton email='nullmessage@pm.me' label='Say Hello'/>
+        </div>
+        <a
+          class='fingerprint'
+          href='/pgp.asc'
+          download='pgp.asc'
+          aria-label='Download public PGP key'
+        >
+          <code>{fingerprintGroups.slice(0, 5).join(' ')}<br />{fingerprintGroups.slice(5).join(' ')}</code>
+        </a>
+      </div>
     </main>
   </body>
 </html>
+
+<style>
+  .contact {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 24px 40px;
+    max-width: 100%;
+  }
+
+  .fingerprint {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+    color: var(--muted);
+    text-decoration: none;
+    font-family: 'Geist Mono', monospace;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .fingerprint code {
+    font: inherit;
+    overflow-wrap: anywhere;
+  }
+
+  .fingerprint:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 5px;
+  }
+
+  .contact-button {
+    display: flex;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    h1,
+    .contact-button,
+    .fingerprint {
+      animation: text-reveal 2s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+    }
+
+    .contact-button {
+      animation-delay: 0.3s;
+    }
+
+    .fingerprint {
+      animation-delay: 0.6s;
+    }
+  }
+
+  @keyframes text-reveal {
+    from {
+      opacity: 0.12;
+      filter: blur(50px);
+      transform: perspective(1000px) translateZ(-180px);
+    }
+
+    to {
+      opacity: 1;
+      filter: blur(0);
+      transform: perspective(1000px) translateZ(0);
+    }
+  }
+</style>

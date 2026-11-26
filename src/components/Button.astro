@@ -1,0 +1,50 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+interface Props extends HTMLAttributes<'button'> {
+  variant?: 'dark' | 'light' | 'auto';
+}
+
+const { variant = 'auto', class: className, type = 'button', ...attributes } = Astro.props;
+---
+
+<button type={type} class:list={['button', `button--${variant}`, className]} {...attributes}>
+  <slot name='icon' />
+  <slot />
+</button>
+
+<style>
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px 40px;
+    border: 0;
+    border-radius: 100px;
+    background: var(--ctp-mocha-base);
+    color: #fff;
+    font: 600 1.25rem/1.2 'Geist', sans-serif;
+    letter-spacing: -0.05em;
+    cursor: pointer;
+  }
+
+  .button--light {
+    background: var(--ctp-latte-base);
+    color: var(--ctp-mocha-base);
+  }
+
+  .button--auto {
+    background: light-dark(var(--ctp-mocha-base), var(--ctp-latte-base));
+    color: light-dark(#fff, var(--ctp-mocha-base));
+  }
+
+  .button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .button :global(svg) {
+    flex-shrink: 0;
+  }
+</style>

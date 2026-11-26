@@ -1,0 +1,29 @@
+---
+import { Send } from '@lucide/astro';
+import Button from './Button.astro';
+
+interface Props {
+  email: string;
+  label?: string;
+  variant?: 'dark' | 'light' | 'auto';
+}
+
+const { email, label = 'Get in touch', variant = 'auto' } = Astro.props;
+// Build-time encoding keeps the literal address out of the delivered HTML/JS.
+// This is obfuscation, not encryption: visitors can recover the recipient.
+const encodedEmail = btoa(email);
+---
+
+<Button variant={variant} data-email={encodedEmail}>
+  <Send slot='icon' size={24} aria-hidden='true' />
+  {label}
+</Button>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('button[data-email]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const encodedEmail = button.dataset.email;
+      if (encodedEmail) window.location.href = `mailto:${atob(encodedEmail)}`;
+    });
+  });
+</script>
