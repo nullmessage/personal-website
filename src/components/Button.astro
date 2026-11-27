@@ -5,10 +5,19 @@ interface Props extends HTMLAttributes<'button'> {
   variant?: 'primary' | 'secondary';
 }
 
-const { variant = 'primary', class: className, type = 'button', ...attributes } = Astro.props;
+const {
+  variant = 'primary',
+  class: className,
+  type = 'button',
+  ...attributes
+} = Astro.props;
 ---
 
-<button type={type} class:list={['button', `button--${variant}`, className]} {...attributes}>
+<button
+  type={type}
+  class:list={['button', `button--${variant}`, className]}
+  {...attributes}
+>
   <slot name='icon' />
   <slot />
 </button>
@@ -22,7 +31,9 @@ const { variant = 'primary', class: className, type = 'button', ...attributes } 
     padding: 20px 40px;
     border: 0;
     border-radius: 100px;
-    font: 600 1.25rem/1.2 'Geist', sans-serif;
+    font:
+      600 1.25rem/1.2 'Geist',
+      sans-serif;
     letter-spacing: -0.05em;
     cursor: pointer;
   }
